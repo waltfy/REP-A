@@ -1,0 +1,33 @@
+{
+  "name": "rep-prototype",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Walter Carvalho",
+  "license": "ISC",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "react": "^0.11.2",
+    "store": "^1.3.16"
+  },
+  "devDependencies": {
+    "autoprefixer": "^3.1.0",
+    "browserify": "~2.36.0",
+    "jest-cli": "~0.1.5",
+    "less": "^1.7.5",
+    "reactify": "~0.4.0",
+    "uglify-js": "~2.4.13",
+    "uglifycss": "0.0.9",
+    "watchify": "~0.4.1"
+  },
+  "scripts": {
+    "start":  "make dev",
+    "build":  "make build",
+    "test":   "make test"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
