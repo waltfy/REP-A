@@ -15,7 +15,14 @@ var _exercises = {
     5: { id: 5, name: 'Leg Press', area: 'Quads' },
     6: { id: 6, name: 'Leg Curl', area: 'Quads' },
     7: { id: 7, name: 'Leg Extension', area: 'Quads' },
-    8: { id: 8, name: 'Calves', area: 'Quads' }
+    8: { id: 8, name: 'Calves', area: 'Quads' },
+    9: { id: 9, name: 'Flat Dumbbell Press', area: 'Chest' },
+    10: { id: 10, name: 'Flat Bench Flyes', area: 'Chest' },
+    11: { id: 11, name: 'Incline Cable Flyes', area: 'Chest' },
+    12: { id: 12, name: 'Cable Crossover', area: 'Chest' },
+    13: { id: 13, name: 'Tricep Cable Pushdowns', area: 'Triceps' },
+    14: { id: 14, name: 'Reverse Cable Pushdowns', area: 'Triceps' },
+    15: { id: 15, name: 'Head Smackers', area: 'Triceps' }
   },
   workouts: Store.get('workouts') || [] // Array
 };
