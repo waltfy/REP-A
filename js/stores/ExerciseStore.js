@@ -22,7 +22,8 @@ var _exercises = {
     12: { id: 12, name: 'Cable Crossover', area: 'Chest' },
     13: { id: 13, name: 'Tricep Cable Pushdowns', area: 'Triceps' },
     14: { id: 14, name: 'Reverse Cable Pushdowns', area: 'Triceps' },
-    15: { id: 15, name: 'Head Smackers', area: 'Triceps' }
+    15: { id: 15, name: 'Head Smackers', area: 'Triceps' },
+    16: { id: 16, name: 'Skull Crushers', area: 'Triceps' }
   },
   workouts: Store.get('workouts') || [] // Array
 };
