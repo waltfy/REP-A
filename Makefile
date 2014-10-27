@@ -22,7 +22,7 @@ uglifycss: ${CSS}
 js: compile minify
 
 compile:
-	browserify js/REP.js -v -o public/REP.js
+	browserify js/REP.js -o public/REP.js
 
 minify:
 	uglifyjs public/REP.js -c -m -o public/REP.min.js
