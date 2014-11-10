@@ -46,13 +46,11 @@ module.exports = ExerciseActions;
 },{"../constants/ExerciseConstants":4,"../dispatcher/Dispatcher":5}],3:[function(require,module,exports){
 /** @jsx React.DOM */
 /* jslint node: true */
+var React = require('react');
 
 var ExerciseActions = require('../actions/ExerciseActions');
 var ExerciseStore = require('../stores/ExerciseStore');
-var React = require('react');
 // var Persistence = require('store');
-
-console.debug('ExerciseStore:', ExerciseStore.getAll());
 
 Object.values = function (o) {
   return Object.keys(o).map(function (key) { return o[key]; });
@@ -87,10 +85,6 @@ var REP = React.createClass({displayName: 'REP',
   render: function () {
 
     var state = this.state;
-
-    // var data = Object.values(workouts
-    //   .reduce(group, {})
-    // );
 
     var createOptions = function (id) {
       return React.DOM.option({key: id, value: id },  state.exercises.list[id].name);
@@ -133,6 +127,7 @@ var REP = React.createClass({displayName: 'REP',
         ), 
         React.DOM.div({className: "progress"}, 
           React.DOM.h2(null, "Progress"), 
+          React.DOM.button({onClick:  this._clearExercise}, "Show All"), 
           React.DOM.table({className: "progress-table"}, 
             React.DOM.thead(null, 
               React.DOM.tr(null, 
@@ -144,7 +139,7 @@ var REP = React.createClass({displayName: 'REP',
             ), 
             React.DOM.tbody(null, 
                state.exercises.workouts
-                  // .reduce(group, {})
+                  .filter(this._filterWorkouts.bind(this, state.active))
                   .sort(sortRows)
                   .map(createRows)
               
@@ -163,19 +158,29 @@ var REP = React.createClass({displayName: 'REP',
     });
   },
 
+  _filterWorkouts: function (exerciseId, workout) {
+    if (!exerciseId) return true;
+    return exerciseId === workout.exerciseId;
+  },
+
   _updateExercise: function (e) {
     e.preventDefault();
     this.setState({ active: e.target.value });
   },
 
+  _clearExercise: function (e) {
+    e.preventDefault();
+    this.setState({ active: null });
+  },
+
   _updateWeight: function (e) {
-    console.debug('_updateWeight() ====================');
+    // console.debug('_updateWeight() ====================');
     e.preventDefault();
     this.setState({ weight: e.target.value });
   },
 
   _updateReps: function (e) {
-    console.debug('_updateReps() ====================');
+    // console.debug('_updateReps() ====================');
     e.preventDefault();
     this.setState({ reps: e.target.value });
   },
@@ -186,8 +191,8 @@ var REP = React.createClass({displayName: 'REP',
   },
 
   _handleChange: function (e) {
-    console.debug('_handleChange() ====================');
-    console.debug('e.target.value:', e.target.value);
+    // console.debug('_handleChange() ====================');
+    // console.debug('e.target.value:', e.target.value);
   },
 
   _onChange: function () {

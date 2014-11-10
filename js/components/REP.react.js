@@ -1,9 +1,9 @@
 /** @jsx React.DOM */
 /* jslint node: true */
+var React = require('react');
 
 var ExerciseActions = require('../actions/ExerciseActions');
 var ExerciseStore = require('../stores/ExerciseStore');
-var React = require('react');
 // var Persistence = require('store');
 
 Object.values = function (o) {
@@ -39,10 +39,6 @@ var REP = React.createClass({
   render: function () {
 
     var state = this.state;
-
-    // var data = Object.values(workouts
-    //   .reduce(group, {})
-    // );
 
     var createOptions = function (id) {
       return <option key={ id } value={ id }>{ state.exercises.list[id].name }</option>;
@@ -85,6 +81,7 @@ var REP = React.createClass({
         </div>
         <div className='progress'>
           <h2>Progress</h2>
+          <button onClick={ this._clearExercise }>Show All</button>
           <table className='progress-table'>
             <thead>
               <tr>
@@ -96,7 +93,7 @@ var REP = React.createClass({
             </thead>
             <tbody>
               { state.exercises.workouts
-                  // .reduce(group, {})
+                  .filter(this._filterWorkouts.bind(this, state.active))
                   .sort(sortRows)
                   .map(createRows)
               }
@@ -115,19 +112,29 @@ var REP = React.createClass({
     });
   },
 
+  _filterWorkouts: function (exerciseId, workout) {
+    if (!exerciseId) return true;
+    return exerciseId === workout.exerciseId;
+  },
+
   _updateExercise: function (e) {
     e.preventDefault();
     this.setState({ active: e.target.value });
   },
 
+  _clearExercise: function (e) {
+    e.preventDefault();
+    this.setState({ active: null });
+  },
+
   _updateWeight: function (e) {
-    console.debug('_updateWeight() ====================');
+    // console.debug('_updateWeight() ====================');
     e.preventDefault();
     this.setState({ weight: e.target.value });
   },
 
   _updateReps: function (e) {
-    console.debug('_updateReps() ====================');
+    // console.debug('_updateReps() ====================');
     e.preventDefault();
     this.setState({ reps: e.target.value });
   },
@@ -138,8 +145,8 @@ var REP = React.createClass({
   },
 
   _handleChange: function (e) {
-    console.debug('_handleChange() ====================');
-    console.debug('e.target.value:', e.target.value);
+    // console.debug('_handleChange() ====================');
+    // console.debug('e.target.value:', e.target.value);
   },
 
   _onChange: function () {
