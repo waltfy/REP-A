@@ -75,8 +75,8 @@ var REP = React.createClass({
             <option value='0' disabled>Select exercise...</option>
             { Object.keys(state.exercises.list).map(createOptions) }
           </select></p>
-          <p><input type='number' min='0' pattern='\d*' onChange={ this._updateWeight } value={ state.weight } placeholder='Weight (kg)' /></p>
-          <p><input type='number' min='0' pattern='\d*' onChange={ this._updateReps } value={ state.reps } placeholder='Reps' /></p>
+          <p><input type='number' min='0' pattern='[-+]?[0-9]*[.,]?[0-9]+' onChange={ this._updateWeight } value={ state.weight } placeholder='Weight (kg)' /></p>
+          <p><input type='number' min='0' pattern='[-+]?[0-9]*[.,]?[0-9]+' onChange={ this._updateReps } value={ state.reps } placeholder='Reps' /></p>
           <p><button onClick={ this._handleAdd }>+ Add</button> <button onClick={ this._clear }>Clear</button></p>
         </div>
         <div className='progress'>

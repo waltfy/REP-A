@@ -121,8 +121,8 @@ var REP = React.createClass({displayName: 'REP',
             React.DOM.option({value: "0", disabled: true}, "Select exercise..."), 
              Object.keys(state.exercises.list).map(createOptions) 
           )), 
-          React.DOM.p(null, React.DOM.input({type: "number", min: "0", pattern: "\\d*", onChange:  this._updateWeight, value:  state.weight, placeholder: "Weight (kg)"})), 
-          React.DOM.p(null, React.DOM.input({type: "number", min: "0", pattern: "\\d*", onChange:  this._updateReps, value:  state.reps, placeholder: "Reps"})), 
+          React.DOM.p(null, React.DOM.input({type: "number", min: "0", pattern: "[-+]?[0-9]*[.,]?[0-9]+", onChange:  this._updateWeight, value:  state.weight, placeholder: "Weight (kg)"})), 
+          React.DOM.p(null, React.DOM.input({type: "number", min: "0", pattern: "[-+]?[0-9]*[.,]?[0-9]+", onChange:  this._updateReps, value:  state.reps, placeholder: "Reps"})), 
           React.DOM.p(null, React.DOM.button({onClick:  this._handleAdd}, "+ Add"), " ", React.DOM.button({onClick:  this._clear}, "Clear"))
         ), 
         React.DOM.div({className: "progress"}, 
