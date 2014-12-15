@@ -48,6 +48,7 @@ function create(exerciseId, weight, reps) {
     Store.set('workouts', _exercises.workouts);
   } catch (err) {
     if (err.code === 22) { alert('Switch to non-private browsing.'); }
+    throw err;
   }
 }
 
