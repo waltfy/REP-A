@@ -1,8 +1,6 @@
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require('react');
-
-// add React to the global scope to enable dev tools
 window.React = React;
 
 var REP = require('./components/REP.react');
@@ -47,7 +45,6 @@ module.exports = ExerciseActions;
 /** @jsx React.DOM */
 /* jslint node: true */
 var React = require('react');
-
 var ExerciseActions = require('../actions/ExerciseActions');
 var ExerciseStore = require('../stores/ExerciseStore');
 // var Persistence = require('store');
@@ -274,8 +271,11 @@ function create(exerciseId, weight, reps) {
     completed: date
   });
 
-  // persist
-  Store.set('workouts', _exercises.workouts);
+  try {
+    Store.set('workouts', _exercises.workouts);
+  } catch (err) {
+    if (err.code === 22) { alert('Switch to non-private browsing.'); }
+  }
 }
 
 var ExerciseStore = merge(EventEmitter.prototype, {

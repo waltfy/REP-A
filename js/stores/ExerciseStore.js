@@ -44,8 +44,11 @@ function create(exerciseId, weight, reps) {
     completed: date
   });
 
-  // persist
-  Store.set('workouts', _exercises.workouts);
+  try {
+    Store.set('workouts', _exercises.workouts);
+  } catch (err) {
+    if (err.code === 22) { alert('Switch to non-private browsing.'); }
+  }
 }
 
 var ExerciseStore = merge(EventEmitter.prototype, {

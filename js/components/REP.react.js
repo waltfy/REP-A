@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 /* jslint node: true */
 var React = require('react');
-
 var ExerciseActions = require('../actions/ExerciseActions');
 var ExerciseStore = require('../stores/ExerciseStore');
 // var Persistence = require('store');
